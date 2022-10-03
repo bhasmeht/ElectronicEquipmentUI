@@ -1,0 +1,43 @@
+<form [formGroup]="userForm" (ngSubmit)="userAdded()"  class="border p-3">
+    <div class="row g-0">
+        <div class="col text-center p-2 mb-3 gb-light">
+           <span class="fs-3">Users</span>
+        </div>
+    </div>
+    <div class="row mb-3">
+            
+            <label for="userid" class="form-label">User ID</label>
+            <input type="text" class="form-control" id="userid" formControlName="userid">
+        
+    </div>
+    <div class="row mb-3">
+        
+            <label for="username" class="form-label">User Name</label>
+            <input type="text" class="form-control" id="username" formControlName="username">
+        
+    </div>
+    <div class="row mb-3">
+        
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+        
+    </div>
+    <div class="row mb-3">
+       
+            <label for="active" class="form-label">Active</label>
+            <input type="text" class="form-control" id="active" formControlName="active">
+      
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Add User</button>
+            </div>
+        </div>
+        <div class="col">
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Update User</button>
+            </div>
+        </div>
+    </div>
+</form>
