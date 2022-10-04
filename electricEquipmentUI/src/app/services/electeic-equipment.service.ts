@@ -12,12 +12,12 @@ export class ElecteicEquipmentService {
 
   addEquipment(equipment:Array<any>){
     return this.http.post(this.baseServerUrl,{
-      EquipmentId: equipment[0],
-      EquipmentName: equipment[1],
-      PartId: equipment[2],
-      EquipmentGroupId: equipment[3],
-      EquipmentCategoryId: equipment[4]
+      
+      EquipmentName: equipment[0],
+      PartId: equipment[1],
+      EquipmentGroupId: equipment[2],
+      EquipmentCategoryId: equipment[3]
 
-    },{responseType:'text'});
+    });
   }
 }

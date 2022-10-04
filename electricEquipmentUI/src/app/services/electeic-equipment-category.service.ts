@@ -12,9 +12,9 @@ export class ElecteicEquipmentCategoryService {
   addEquipmentCategory(equipmentcategory:Array<any>){
     const headers = new HttpHeaders().set('Content-Type','application/json');
     return this.http.post(this.baseServerUrl,{
-      EquipmentCategoryId: equipmentcategory[0],
-      EquipmentCategoryName: equipmentcategory[1]
       
-    },{headers:headers});
+      EquipmentCategoryName: equipmentcategory[0]
+      
+    });
   }
 }

@@ -16,13 +16,13 @@ export class EquipmentCategoryComponent implements OnInit {
 
 
   equipmentCategoryForm = new FormGroup({
-    equipmentcategoryid: new FormControl(""),
+    
     equipmentcategoryname: new FormControl(""),
   });
 
   equipmentCategoryAdded(){
     this.addEquipmentCategoryService.addEquipmentCategory([
-      this.equipmentCategoryForm.value.equipmentcategoryid,
+      
       this.equipmentCategoryForm.value.equipmentcategoryname
       
     ]).subscribe()

@@ -11,10 +11,10 @@ export class ElecteicEquipmentGroupService {
 
   addEquipmentGroup(equipmentgroup:Array<any>){
     return this.http.post(this.baseServerUrl,{
-      EquipmentGroupId: equipmentgroup[0],
-      EquipmentGroupName: equipmentgroup[1],
+      
+      EquipmentGroupName: equipmentgroup[0],
       EquipmentCategoryId: equipmentgroup[1],
       
-    },{responseType:'text'});
+    });
   }
 }
