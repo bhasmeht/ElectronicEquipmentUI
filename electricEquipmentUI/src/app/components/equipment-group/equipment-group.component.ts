@@ -8,7 +8,7 @@ import { ElecteicEquipmentGroupService } from 'src/app/services/electeic-equipme
   styleUrls: ['./equipment-group.component.css']
 })
 export class EquipmentGroupComponent implements OnInit {
-  equipmentGroupForm: any;
+  
 
   constructor(private addEquipmentGroupService: ElecteicEquipmentGroupService ) { }
 
@@ -16,15 +16,14 @@ export class EquipmentGroupComponent implements OnInit {
   }
 
 
-  equipmentCategoryForm = new FormGroup({
-  equipmentgroupid: new FormControl(""),
-  equipmentgroupname: new FormControl(""),
-  equipmentcategoryid: new FormControl("")
+  equipmentGroupForm = new FormGroup({
+    equipmentgroupname: new FormControl(""),
+    equipmentcategoryid: new FormControl("")
   });
 
   equipmentGroupAdded(){
     this.addEquipmentGroupService.addEquipmentGroup([
-      this.equipmentGroupForm.value.equipmentgroupid,
+      
       this.equipmentGroupForm.value.equipmentgroupname,
       this.equipmentGroupForm.value.equipmentcategoryid
       

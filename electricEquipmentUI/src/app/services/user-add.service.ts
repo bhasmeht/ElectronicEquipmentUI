@@ -7,18 +7,34 @@ import { Injectable } from '@angular/core';
 export class UserAddService {
 
   constructor(private http: HttpClient) { }
-  baseServerUrl = "http://localhost:5000/api/User/adduser";
+  baseServerUrl = "http://localhost:5000/api/User/";
   
   
 
-  addUser(user:Array<any>){
-    const headers = new HttpHeaders().set('Content-Type','application/json');
-    return this.http.post(this.baseServerUrl,{
+  addUser(user:any){
+    
+    return this.http.post(this.baseServerUrl+ "adduser",{
+      
+      UserName: user[0],
+      Password: user[1],
+      Active: user[2]
+    },{responseType:'text'});
+  }
+  updateUser(user:any){
+    
+    return this.http.put(this.baseServerUrl + "updateuser",{
       UserId: user[0],
       UserName: user[1],
       Password: user[2],
       Active: user[3]
-    },{headers:headers});
+    },{responseType:'text'});
+  }
+
+  userLogin(user:any){
+     return this.http.post(this.baseServerUrl+'loginuser',{
+      UserName:user[0],
+      Password:user[1]
+     },{responseType:'text'});
   }
   
 }

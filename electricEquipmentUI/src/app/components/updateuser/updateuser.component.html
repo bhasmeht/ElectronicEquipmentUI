@@ -1,10 +1,15 @@
-<form [formGroup]="userForm" (ngSubmit)="userAdded()"  class="border p-3">
+<form [formGroup]="userForm" (ngSubmit)="userUpdated()"  class="border p-3">
     <div class="row g-0">
         <div class="col text-center p-2 mb-3 gb-light">
            <span class="fs-3">Users</span>
         </div>
     </div>
-    
+    <div class="row mb-3">
+            
+            <label for="userid" class="form-label">User ID</label>
+            <input type="text" class="form-control" id="userid" formControlName="userid">
+        
+    </div>
     <div class="row mb-3">
         
             <label for="username" class="form-label">User Name</label>
@@ -24,15 +29,15 @@
       
     </div>
     <div class="row">
-        <div class="col-6 offset">
+        <div class="col">
             <div class="d-grid">
-                <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary">Add</button>
+                <button type="submit" class="btn btn-primary">Update User</button>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col mt-3">
-            <a routerLink="/updateuser">Update User</a>
+            <a routerLink="/user">Add User</a>
         </div>
     </div>
 </form>

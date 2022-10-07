@@ -16,7 +16,7 @@ export class EquipmentsComponent implements OnInit {
 
 
   equipmentForm = new FormGroup({
-    equipmentid: new FormControl(""),
+    
     equipmentname: new FormControl(""),
     partid: new FormControl(""),
     equipmentgroupid: new FormControl(""),
@@ -25,7 +25,7 @@ export class EquipmentsComponent implements OnInit {
 
   equipmentAdded(){
     this.addEquipmentService.addEquipment([
-      this.equipmentForm.value.equipmentid,
+      
       this.equipmentForm.value.equipmentname,
       this.equipmentForm.value.partid,
       this.equipmentForm.value.equipmentgroupid,

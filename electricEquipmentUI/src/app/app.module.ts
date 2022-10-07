@@ -13,6 +13,12 @@ import { EquipmentGroupComponent } from './components/equipment-group/equipment-
 import { EquipmentCategoryComponent } from './components/equipment-category/equipment-category.component';
 import { ElecteicEquipmentCategoryService } from './services/electeic-equipment-category.service';
 import { ElecteicEquipmentGroupService } from './services/electeic-equipment-group.service';
+import { UpdateuserComponent } from './components/updateuser/updateuser.component';
+import { LoginComponent } from './components/login/login.component';
+import { UpdateequipmentcategoryComponent } from './components/updateequipmentcategory/updateequipmentcategory.component';
+import { DeleteequipmentcategoryComponent } from './components/deleteequipmentcategory/deleteequipmentcategory.component';
+import { UpdateequipmentgroupComponent } from './components/updateequipmentgroup/updateequipmentgroup.component';
+import { UpdateequipmentComponent } from './components/updateequipment/updateequipment.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,13 @@ import { ElecteicEquipmentGroupService } from './services/electeic-equipment-gro
     UserComponent,
     EquipmentsComponent,
     EquipmentGroupComponent,
-    EquipmentCategoryComponent
+    EquipmentCategoryComponent,
+    UpdateuserComponent,
+    LoginComponent,
+    UpdateequipmentcategoryComponent,
+    DeleteequipmentcategoryComponent,
+    UpdateequipmentgroupComponent,
+    UpdateequipmentComponent
     
   ],
   imports: [
