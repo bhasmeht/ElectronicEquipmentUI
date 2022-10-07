@@ -22,10 +22,8 @@ export class EquipmentCategoryComponent implements OnInit {
 
   equipmentCategoryAdded(){
     this.addEquipmentCategoryService.addEquipmentCategory([
-      
       this.equipmentCategoryForm.value.equipmentcategoryname
-      
-    ]).subscribe()
+      ]).subscribe()
   }
 
 }

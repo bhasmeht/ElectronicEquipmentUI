@@ -1,9 +1,15 @@
-<form [formGroup]="equipmentForm" (ngSubmit)="equipmentAdded()"  class="border p-3">
+<form [formGroup]="updateEquipmentForm" (ngSubmit)="equipmentUpdated()"  class="border p-3">
     <div class="row g-0">
         <div class="col text-center p-2 mb-3 gb-light">
            <span class="fs-3">Equipments</span>
         </div>
     </div>
+    <div class="row mb-3">
+        
+        <label for="equipmentid" class="form-label">EquipmentId</label>
+        <input type="text" class="form-control" id="equipmentid" formControlName="equipmentid">
+    
+</div>
    
     <div class="row mb-3">
         
@@ -32,11 +38,10 @@
     <div class="row">
         <div class="col">
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Add Equipment</button>
+                <button type="submit" class="btn btn-primary">Update Equipment</button>
             </div>
         </div>
         
         
     </div>
 </form>
-

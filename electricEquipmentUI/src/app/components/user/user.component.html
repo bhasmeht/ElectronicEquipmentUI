@@ -24,11 +24,15 @@
       
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col-6 offset">
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Add User</button>
+                <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary">Add</button>
             </div>
         </div>
-        
+    </div>
+    <div class="row">
+        <div class="col mt-3">
+            <a routerLink="/updateuser">Update User</a>
+        </div>
     </div>
 </form>

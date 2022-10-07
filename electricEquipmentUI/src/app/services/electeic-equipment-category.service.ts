@@ -7,14 +7,26 @@ import { Injectable } from '@angular/core';
 export class ElecteicEquipmentCategoryService {
 
   constructor(private http: HttpClient) { }
-  baseServerUrl = "http://localhost:5000/api/EquipmentCategory/addequipmentcategory";
+  baseServerUrl = "http://localhost:5000/api/EquipmentCategory/";
 
-  addEquipmentCategory(equipmentcategory:Array<any>){
-    const headers = new HttpHeaders().set('Content-Type','application/json');
-    return this.http.post(this.baseServerUrl,{
+  addEquipmentCategory(equipmentcategory:any){
+    
+    return this.http.post(this.baseServerUrl+"addequipmentcategory",{
       
       EquipmentCategoryName: equipmentcategory[0]
       
-    });
+    },{responseType:'text'});
+  }
+
+  updateEquipmentCategory(equipmentcategory:any){
+    
+    return this.http.put(this.baseServerUrl+"updateequipmentcategory",{
+      EquipmentCategoryId: equipmentcategory[0],
+      EquipmentCategoryName: equipmentcategory[1]
+      
+    },{responseType:'text'});
+  }
+  deleteEquipmentCategory(equipmentcategory:any){
+    return this.http.delete(this.baseServerUrl+"deleteequipmentcategory");
   }
 }
