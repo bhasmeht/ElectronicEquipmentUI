@@ -8,10 +8,10 @@ export class ElecteicEquipmentService {
 
   constructor(private http: HttpClient) { }
 
-  baseServerUrl = "http://localhost:5000/api/Equipment/addequipment";
+  baseServerUrl = "http://localhost:5000/api/Equipment/";
 
-  addEquipment(equipment:Array<any>){
-    return this.http.post(this.baseServerUrl,{
+  addEquipment(equipment:any){
+    return this.http.post(this.baseServerUrl+'addequipment',{
       
       EquipmentName: equipment[0],
       PartId: equipment[1],
@@ -19,5 +19,24 @@ export class ElecteicEquipmentService {
       EquipmentCategoryId: equipment[3]
 
     });
+  }
+
+  updateEquipment(equipment:any){
+    return this.http.put(this.baseServerUrl+'updateequipment',{
+      EquipmentId: equipment[0],
+      EquipmentName: equipment[1],
+      PartId: equipment[2],
+      EquipmentGroupId: equipment[3],
+      EquipmentCategoryId: equipment[4]
+
+    });
+  }
+
+  getAllEquipmentCategory(){
+    return this.http.get('http://localhost:5000/api/EquipmentCategory/getequipmentcategory');
+  }
+
+  getEquipmentGroupByCategoryId(equipCatId:any){
+    return this.http.get('http://localhost:5000/api/EquipmentGroup/getequipmentcategorybygroupid/'+equipCatId);
   }
 }

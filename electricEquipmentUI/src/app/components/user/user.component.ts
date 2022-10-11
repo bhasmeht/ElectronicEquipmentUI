@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { UserAddService } from 'src/app/services/user-add.service';
 
@@ -15,12 +15,21 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+
   userForm = new FormGroup({
     
-    username: new FormControl(""),
-    password: new FormControl(""),
+    username: new FormControl("",Validators.required),
+    password: new FormControl("",[Validators.required,Validators.minLength(8)]),
     active: new FormControl("")
   });
+
+  get Username(): FormControl{ 
+    return this.userForm.get('username') as FormControl
+  }
+  get Password(): FormControl{
+    return this.userForm.get('password') as FormControl
+  }
 
  
 

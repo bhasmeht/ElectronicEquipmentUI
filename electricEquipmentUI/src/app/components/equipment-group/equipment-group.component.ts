@@ -12,7 +12,14 @@ export class EquipmentGroupComponent implements OnInit {
 
   constructor(private addEquipmentGroupService: ElecteicEquipmentGroupService ) { }
 
+
+  equipmentCategoryList:any;
+
   ngOnInit(): void {
+
+    this.addEquipmentGroupService.getAllEquipmentCategory().subscribe(equipmentCategoryList=>
+      {this.equipmentCategoryList = equipmentCategoryList
+    });
   }
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ElecteicEquipmentService } from 'src/app/services/electeic-equipment.service';
 
 @Component({
@@ -9,17 +9,28 @@ import { ElecteicEquipmentService } from 'src/app/services/electeic-equipment.se
 })
 export class EquipmentsComponent implements OnInit {
 
-  constructor(private addEquipmentService: ElecteicEquipmentService) { }
+  
+   
 
-  ngOnInit(): void {
+  constructor(private addEquipmentService: ElecteicEquipmentService) { }
+  equipmentCategoryList:any;
+  equipmentGroupList: any;
+  
+
+  ngOnInit() {
+    this.addEquipmentService.getAllEquipmentCategory().subscribe(equipmentCategoryList=>
+      {this.equipmentCategoryList = equipmentCategoryList
+    });
+    
   }
+  
 
 
   equipmentForm = new FormGroup({
     
     equipmentname: new FormControl(""),
     partid: new FormControl(""),
-    equipmentgroupid: new FormControl(""),
+    equipmentgroupid: new FormControl("123"),
     equipmentcategoryid: new FormControl("")
   });
 
@@ -31,5 +42,13 @@ export class EquipmentsComponent implements OnInit {
       this.equipmentForm.value.equipmentgroupid,
       this.equipmentForm.value.equipmentcategoryid
     ]).subscribe()
+  }
+
+  GetEquipGroupById(event:any){
+     console.log(event);
+     this.addEquipmentService.getEquipmentGroupByCategoryId(event).subscribe(equipmentGroupList=>{
+      this.equipmentGroupList=equipmentGroupList;
+     })
+
   }
 }

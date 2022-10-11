@@ -4,34 +4,36 @@
            <span class="fs-3">Users</span>
         </div>
     </div>
-    <div class="row mb-3">
-            
-            <label for="userid" class="form-label">User ID</label>
-            <input type="text" class="form-control" id="userid" formControlName="userid">
-        
-    </div>
+    
     <div class="row mb-3">
         
             <label for="username" class="form-label">User Name</label>
             <input type="text" class="form-control" id="username" formControlName="username">
-        
+            <div class="form-text text-danger" *ngIf="Username.errors?.['required'] && (Username.dirty || Username.touched)">
+                Please Enter Username
+            </div>
     </div>
     <div class="row mb-3">
         
-            <label for="password" class="form-label">Password</label>
+        <label for="oldpassword" class="form-label"> Password</label>
+        <input type="password" class="form-control" id="oldpassword" formControlName="oldpassword">
+        <div class="form-text text-danger" *ngIf="OldPassword.errors?.['minlength'] && (OldPassword.dirty || OldPassword.touched)">
+            Please Enter  Password.
+        </div>
+</div>
+    <div class="row mb-3">
+        
+            <label for="password" class="form-label">New Password</label>
             <input type="password" class="form-control" id="password" formControlName="password">
-        
+            <div class="form-text text-danger" *ngIf="Password.errors?.['minlength'] && (Password.dirty || Password.touched)">
+                Please Enter New Password and should be  atleast 8 characters long.
+            </div>
     </div>
-    <div class="row mb-3">
-       
-            <label for="active" class="form-label">Active</label>
-            <input type="text" class="form-control" id="active" formControlName="active">
-      
-    </div>
+    
     <div class="row">
         <div class="col">
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Update User</button>
+                <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary">Update User</button>
             </div>
         </div>
     </div>

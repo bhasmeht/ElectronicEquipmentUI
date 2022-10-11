@@ -14,6 +14,10 @@ import { EquipmentCategoryComponent } from './components/equipment-category/equi
 import { ElecteicEquipmentCategoryService } from './services/electeic-equipment-category.service';
 import { ElecteicEquipmentGroupService } from './services/electeic-equipment-group.service';
 import { UpdateuserComponent } from './components/updateuser/updateuser.component';
+import { LoginComponent } from './components/login/login.component';
+import { UpdateequipmentComponent } from './components/updateequipment/updateequipment.component';
+import { UpdateequipmentgroupComponent } from './components/updateequipmentgroup/updateequipmentgroup.component';
+import { UpdateequipmentcategoryComponent } from './components/updateequipmentcategory/updateequipmentcategory.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { UpdateuserComponent } from './components/updateuser/updateuser.componen
     EquipmentsComponent,
     EquipmentGroupComponent,
     EquipmentCategoryComponent,
-    UpdateuserComponent
+    UpdateuserComponent,
+    LoginComponent,
+    UpdateequipmentComponent,
+    UpdateequipmentgroupComponent,
+    UpdateequipmentcategoryComponent
     
   ],
   imports: [

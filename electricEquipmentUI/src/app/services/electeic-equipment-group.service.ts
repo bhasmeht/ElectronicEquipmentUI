@@ -7,14 +7,26 @@ import { Injectable } from '@angular/core';
 export class ElecteicEquipmentGroupService {
 
   constructor(private http: HttpClient) { }
-  baseServerUrl = "http://localhost:5000/api/EquipmentGroup/addequipmentgroup";
+  baseServerUrl = "http://localhost:5000/api/EquipmentGroup/";
 
-  addEquipmentGroup(equipmentgroup:Array<any>){
-    return this.http.post(this.baseServerUrl,{
+  addEquipmentGroup(equipmentgroup:any){
+    return this.http.post(this.baseServerUrl+'addequipmentgroup',{
       
       EquipmentGroupName: equipmentgroup[0],
       EquipmentCategoryId: equipmentgroup[1],
       
     });
+  }
+
+  updateEquipmentGroup(equipmentgroup:any){
+    return this.http.put(this.baseServerUrl+'addequipmentgroup',{
+      EquipmentGroupId: equipmentgroup[1],
+      EquipmentGroupName: equipmentgroup[2],
+      EquipmentCategoryId: equipmentgroup[3],
+      
+    });
+  }
+  getAllEquipmentCategory(){
+    return this.http.get('http://localhost:5000/api/EquipmentCategory/getequipmentcategory');
   }
 }

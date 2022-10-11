@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserAddService } from 'src/app/services/user-add.service';
 
 @Component({
@@ -15,20 +15,31 @@ export class UpdateuserComponent implements OnInit {
   }
 
   userForm = new FormGroup({
-    userid:new FormControl(""),
-    username: new FormControl(""),
-    password: new FormControl(""),
-    active: new FormControl("")
+    
+    username: new FormControl("",Validators.required),
+    oldpassword: new FormControl("",[Validators.required,Validators.minLength(8)]),
+    password: new FormControl("",[Validators.required,Validators.minLength(8)]),
+    
   });
 
  
 
   userUpdated(){
     this.updateUserService.updateUser([
-      this.userForm.value.userid,
+      
       this.userForm.value.username,
+      this.userForm.value.oldpassword,
       this.userForm.value.password,
-      this.userForm.value.active
+      
     ]).subscribe();
+  }
+  get Username(): FormControl{ 
+    return this.userForm.get('username') as FormControl
+  }
+  get OldPassword(): FormControl{
+    return this.userForm.get('oldpassword') as FormControl
+  }
+  get Password(): FormControl{
+    return this.userForm.get('password') as FormControl
   }
 }

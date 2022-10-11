@@ -1,7 +1,7 @@
-<form [formGroup]="userForm" (ngSubmit)="userAdded()"  class="border p-3">
+<form [formGroup]="loginForm" (ngSubmit)="userLogin()"  class="border p-3">
     <div class="row g-0">
         <div class="col text-center p-2 mb-3 gb-light">
-           <span class="fs-3">Users</span>
+           <span class="fs-3">Login</span>
         </div>
     </div>
     
@@ -12,32 +12,30 @@
             <div class="form-text text-danger" *ngIf="Username.errors?.['required'] && (Username.dirty || Username.touched)">
                 Please Enter Username
             </div>
+        
     </div>
     <div class="row mb-3">
         
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" formControlName="password">
-            <div class="form-text text-danger" *ngIf="Password.errors?.['minlength'] && (Password.dirty || Password.touched)">
-                Please Enter Password of atleast 8 character
+            <div class="form-text text-danger" *ngIf="Password.errors?.['required'] && (Password.dirty || Password.touched)">
+                Please Enter Password
             </div>
     </div>
-    <div class="row mb-3">
-       
-            <label for="active" class="form-label">Active</label>
-            <input type="text" class="form-control" id="active" formControlName="active">
-      
-    </div>
+    
     <div class="row">
         <div class="col">
             <div class="d-grid">
-                <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary">Add User</button>
+                <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
             </div>
+            
         </div>
+        
     </div>
     <div class="row">
         <div class="col mb-3">
             
-                <span class="ne-2">Login Here</span><a routerLink="/login">Login</a>
+                <span >SignUp Here</span><a routerLink="/user">SignUp</a>
         </div>
     </div>
 </form>
