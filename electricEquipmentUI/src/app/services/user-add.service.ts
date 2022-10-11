@@ -17,16 +17,19 @@ export class UserAddService {
       
       UserName: user[0],
       Password: user[1],
-      Active: user[2]
+      ConfirmPassword:user[2],
+      Active: user[3]
     },{responseType:'text'});
   }
   updateUser(user:any){
     
     return this.http.put(this.baseServerUrl + "updateuser",{
-      UserId: user[0],
-      UserName: user[1],
-      Password: user[2],
-      Active: user[3]
+      
+      UserName: user[0],
+      Password: user[1],
+      NewPassword:user[2],
+      ConfirmPassword:user[3]
+      
     },{responseType:'text'});
   }
 

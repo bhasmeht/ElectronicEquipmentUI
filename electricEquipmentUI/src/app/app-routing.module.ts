@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DeleteequipmentComponent } from './components/deleteequipment/deleteequipment.component';
 import { EquipmentCategoryComponent } from './components/equipment-category/equipment-category.component';
 import { EquipmentGroupComponent } from './components/equipment-group/equipment-group.component';
 import { EquipmentsComponent } from './components/equipments/equipments.component';
@@ -39,6 +40,9 @@ const routes: Routes = [
  },
  {path:'equipment',
   component: EquipmentsComponent
+ },
+ {path:'deleteequipment',
+  component: DeleteequipmentComponent
  },
  {path:'updateequipment',
   component: UpdateequipmentComponent

@@ -32,8 +32,16 @@ export class ElecteicEquipmentService {
     });
   }
 
+  deleteEquipment(equipment:any){
+    return this.http.delete(this.baseServerUrl+'deleteequipment');
+  }
+
   getAllEquipmentCategory(){
     return this.http.get('http://localhost:5000/api/EquipmentCategory/getequipmentcategory');
+  }
+
+  getAllEquipment(){
+    return this.http.get('http://localhost:5000/api/Equipment/getequipment');
   }
 
   getEquipmentGroupByCategoryId(equipCatId:any){

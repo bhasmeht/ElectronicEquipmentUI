@@ -18,6 +18,7 @@ import { LoginComponent } from './components/login/login.component';
 import { UpdateequipmentComponent } from './components/updateequipment/updateequipment.component';
 import { UpdateequipmentgroupComponent } from './components/updateequipmentgroup/updateequipmentgroup.component';
 import { UpdateequipmentcategoryComponent } from './components/updateequipmentcategory/updateequipmentcategory.component';
+import { DeleteequipmentComponent } from './components/deleteequipment/deleteequipment.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { UpdateequipmentcategoryComponent } from './components/updateequipmentca
     LoginComponent,
     UpdateequipmentComponent,
     UpdateequipmentgroupComponent,
-    UpdateequipmentcategoryComponent
+    UpdateequipmentcategoryComponent,
+    DeleteequipmentComponent
     
   ],
   imports: [

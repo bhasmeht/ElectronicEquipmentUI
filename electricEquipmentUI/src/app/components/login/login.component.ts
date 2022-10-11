@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password') as FormControl
   }
   
-  isUserValid:boolean=false;
+  
   userLogin(){
     this.loginUserService.loginUser([
       
@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
     ]).subscribe(res=>{
       if(res=='Failure')
       {
-        this.isUserValid=false;
+        
+        alert("Please Enter Valid Credential");
       }
       else{
         this.router.navigateByUrl('equipment')

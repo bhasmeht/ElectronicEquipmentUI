@@ -21,6 +21,7 @@ export class UserComponent implements OnInit {
     
     username: new FormControl("",Validators.required),
     password: new FormControl("",[Validators.required,Validators.minLength(8)]),
+    confirmpassword: new FormControl("",[Validators.required,Validators.minLength(8)]),
     active: new FormControl("")
   });
 
@@ -30,6 +31,9 @@ export class UserComponent implements OnInit {
   get Password(): FormControl{
     return this.userForm.get('password') as FormControl
   }
+  get confirmPassword(): FormControl{
+    return this.userForm.get('confirmpassword') as FormControl
+  }
 
  
 
@@ -38,6 +42,7 @@ export class UserComponent implements OnInit {
       
       this.userForm.value.username,
       this.userForm.value.password,
+      this.userForm.value.confirmpassword,
       this.userForm.value.active
     ]).subscribe();
   }
