@@ -41,11 +41,14 @@ export class LoginComponent implements OnInit {
       {
         
         alert("Please Enter Valid Credential");
+        this.router.navigate(['login']).then(page => { window.location.reload(); });
       }
       else{
+        this.loginUserService.setToken(res);
         this.router.navigateByUrl('equipment')
       }
     });
   }
+ 
 
 }

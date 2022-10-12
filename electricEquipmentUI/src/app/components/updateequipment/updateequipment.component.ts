@@ -42,4 +42,7 @@ export class UpdateequipmentComponent implements OnInit {
     })
 
  }
+ reloadCurrentPage() {
+  window. location. reload();
+  }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ElecteicEquipmentService } from 'src/app/services/electeic-equipment.service';
+import { UserAddService } from 'src/app/services/user-add.service';
 
 @Component({
   selector: 'app-equipments',
@@ -12,7 +14,7 @@ export class EquipmentsComponent implements OnInit {
   
    
 
-  constructor(private addEquipmentService: ElecteicEquipmentService) { }
+  constructor(private addEquipmentService: ElecteicEquipmentService, private userAddService: UserAddService, private router: Router) { }
   equipmentCategoryList:any;
   equipmentGroupList: any;
   
@@ -41,7 +43,13 @@ export class EquipmentsComponent implements OnInit {
       this.equipmentForm.value.partid,
       this.equipmentForm.value.equipmentgroupid,
       this.equipmentForm.value.equipmentcategoryid
-    ]).subscribe()
+    ]).subscribe(res=>{
+      if(res=="EquipmentExist"){
+        alert("Equipment Already Exist");
+        this.router.navigateByUrl('equipment');
+      }
+      this.router.navigateByUrl('equipment');
+    })
   }
 
   GetEquipGroupById(event:any){
@@ -51,4 +59,14 @@ export class EquipmentsComponent implements OnInit {
      })
 
   }
+
+  logOut()
+  {
+    this.userAddService.removeToken();
+    this.router.navigateByUrl('login');
+
+  }
+  reloadCurrentPage() {
+    window. location. reload();
+    }
 }

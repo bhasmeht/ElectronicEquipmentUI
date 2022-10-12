@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserAddService } from 'src/app/services/user-add.service';
 
@@ -10,7 +11,7 @@ import { UserAddService } from 'src/app/services/user-add.service';
 })
 export class UserComponent implements OnInit {
 
-  constructor(private addUserService: UserAddService) { }
+  constructor(private addUserService: UserAddService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -19,10 +20,10 @@ export class UserComponent implements OnInit {
 
   userForm = new FormGroup({
     
-    username: new FormControl("",Validators.required),
+    username: new FormControl("",[Validators.required, Validators.pattern("[a-zA-Z].*")]),
     password: new FormControl("",[Validators.required,Validators.minLength(8)]),
     confirmpassword: new FormControl("",[Validators.required,Validators.minLength(8)]),
-    active: new FormControl("")
+    active: new FormControl("",Validators.required)
   });
 
   get Username(): FormControl{ 
@@ -34,6 +35,9 @@ export class UserComponent implements OnInit {
   get confirmPassword(): FormControl{
     return this.userForm.get('confirmpassword') as FormControl
   }
+  get Active(): FormControl{
+    return this.userForm.get('active') as FormControl
+  }
 
  
 
@@ -44,7 +48,26 @@ export class UserComponent implements OnInit {
       this.userForm.value.password,
       this.userForm.value.confirmpassword,
       this.userForm.value.active
-    ]).subscribe();
+    ]).subscribe(res=>{
+      if(res=='Exist')
+      {
+        alert("User already exist")
+        
+        this.router.navigate(['user']).then(page => { window.location.reload(); });
+      }
+      else if(res=="Confirm_Password"){
+        alert("Please Confirm Your Password")
+        this.router.navigate(['user']).then(page => { window.location.reload(); });
+      }
+      else{
+        console.log(res);
+        this.addUserService.setToken(res);
+        this.router.navigateByUrl('equipment')
+      }
+      
+    });
   }
+  
+  
 
 }

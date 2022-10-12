@@ -10,6 +10,7 @@ import { UpdateequipmentcategoryComponent } from './components/updateequipmentca
 import { UpdateequipmentgroupComponent } from './components/updateequipmentgroup/updateequipmentgroup.component';
 import { UpdateuserComponent } from './components/updateuser/updateuser.component';
 import { UserComponent } from './components/user/user.component';
+import { UserguardGuard } from './services/userguard.guard';
 
 const routes: Routes = [
   {path:'',
@@ -39,7 +40,8 @@ const routes: Routes = [
   component: UpdateequipmentgroupComponent
  },
  {path:'equipment',
-  component: EquipmentsComponent
+  component: EquipmentsComponent,
+  canActivate:[UserguardGuard]
  },
  {path:'deleteequipment',
   component: DeleteequipmentComponent
