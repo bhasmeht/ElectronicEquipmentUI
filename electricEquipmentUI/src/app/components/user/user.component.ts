@@ -35,9 +35,7 @@ export class UserComponent implements OnInit {
   get confirmPassword(): FormControl{
     return this.userForm.get('confirmpassword') as FormControl
   }
-  get Active(): FormControl{
-    return this.userForm.get('active') as FormControl
-  }
+  
 
  
 

@@ -48,7 +48,11 @@ export class EquipmentsComponent implements OnInit {
         alert("Equipment Already Exist");
         this.router.navigateByUrl('equipment');
       }
-      this.router.navigateByUrl('equipment');
+      else{
+         alert("Equipment Added Successfully");
+         this.router.navigateByUrl('equipment');
+      }
+      
     })
   }
 

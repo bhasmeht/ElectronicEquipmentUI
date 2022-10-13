@@ -1,4 +1,4 @@
-<form  [formGroup]="equipmentForm"  (ngSubmit)="equipmentDeleted()"   class="border p-3">
+<form  [formGroup]="equipmentForm"  class="border p-3">
     <div class="row g-0">
         <div class="col text-center p-2 mb-3 gb-light">
            <span class="fs-3">Delete Equipments</span>
@@ -7,19 +7,11 @@
    
     <div class="form-group row mb-3">
         <label>Equipment</label>
-        <select formControlName="equipment"  class="form-control" >
+        
+        <select formControlName="equipment" (input)="getEquipmentId($any($event.target).value)" class="form-control" >    
             <option value="0" disabled selected>Delete Equipment</option>
-            <option [value]="equip.equipmentId" *ngFor="let equip of equipmentList">{{equip.equipmentName}}</option>
+            <option [value]="equip.equipmentId" *ngFor="let equip of equipmentList" type="number">{{equip.equipmentName}}</option>
+            
         </select>
 </div>
-
-    
-<div class="row">
-        <div class="col-6 offset-3 mb-3">
-            <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Delete Equipment</button>
-            </div>
-        </div>
-    </div>
-    
 </form>

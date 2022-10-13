@@ -33,13 +33,17 @@
         </div>
     </div>
     <div class="row mb-3">
-       
-            <label for="active" class="form-label">Active</label>
-            <input type="text" class="form-control" id="active" formControlName="active">
-            <div class="form-text text-danger" *ngIf="Active.errors?.['required'] && (Active.dirty || Active.touched)">
-                Please Enter Either true or false .
+            <div class="col ps-3 mb-3">
+                <div class="m-1 mb-3">Active</div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" [value]="true" id="true" formControlName="active">
+                    <label class="form-check-label" for="true">true</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" [value]="false" id="false" formControlName="active">
+                    <label class="form-check-label" for="false">false</label>
+                </div>
             </div>
-      
     </div>
     <div class="row">
         <div class="col-6 offset-3 mb-3">

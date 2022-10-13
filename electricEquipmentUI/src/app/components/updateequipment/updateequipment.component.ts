@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ElecteicEquipmentService } from 'src/app/services/electeic-equipment.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ElecteicEquipmentService } from 'src/app/services/electeic-equipment.se
 })
 export class UpdateequipmentComponent implements OnInit {
 
-  constructor(private updateEquipmentService: ElecteicEquipmentService) { }
+  constructor(private updateEquipmentService: ElecteicEquipmentService,private router: Router) { }
   equipmentCategoryList:any;
   equipmentGroupList: any;
 
@@ -19,21 +20,28 @@ export class UpdateequipmentComponent implements OnInit {
     });
   }
   updateEquipmentForm = new FormGroup({
-    equipmentid: new FormControl(""),
     equipmentname: new FormControl(""),
-    partid: new FormControl(""),
-    equipmentgroupid: new FormControl(""),
-    equipmentcategoryid: new FormControl("")
+    partid: new FormControl("",Validators.required),
+    equipmentgroupid: new FormControl("",Validators.required),
+    equipmentcategoryid: new FormControl("",Validators.required)
   });
 
   equipmentUpdated(){
     this.updateEquipmentService.updateEquipment([
-      this.updateEquipmentForm.value.equipmentid,
       this.updateEquipmentForm.value.equipmentname,
       this.updateEquipmentForm.value.partid,
       this.updateEquipmentForm.value.equipmentgroupid,
       this.updateEquipmentForm.value.equipmentcategoryid
-    ]).subscribe()
+    ]).subscribe(res=>{
+      if(res=="NotAvailable"){
+        alert("Equipment Not Available");
+        this.router.navigate(['updateequipment']).then(page => { window.location.reload(); });
+      }
+      else{
+        alert("Updated Successfully");
+        this.router.navigate(['updateequipment']).then(page => { window.location.reload(); });
+      }
+    })
   }
   GetEquipGroupById(event:any){
     console.log(event);
@@ -42,7 +50,5 @@ export class UpdateequipmentComponent implements OnInit {
     })
 
  }
- reloadCurrentPage() {
-  window. location. reload();
-  }
+ 
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ElecteicEquipmentService } from 'src/app/services/electeic-equipment.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ElecteicEquipmentService } from 'src/app/services/electeic-equipment.se
 })
 export class DeleteequipmentComponent implements OnInit {
 
-  constructor(private deleteEquipmentService:ElecteicEquipmentService) { }
+  constructor(private deleteEquipmentService:ElecteicEquipmentService, private router:Router) { }
 
   equipmentList:any;
 
@@ -18,6 +19,7 @@ export class DeleteequipmentComponent implements OnInit {
     this.deleteEquipmentService.getAllEquipment().subscribe(equipmentList=>
       {this.equipmentList = equipmentList
     });
+    
   }
 
   // equipmentDeleted(){
@@ -25,14 +27,41 @@ export class DeleteequipmentComponent implements OnInit {
   // }
   equipmentForm = new FormGroup({
     
-    equipmentname: new FormControl(""),
+    equipment: new FormControl(""),
     
   });
 
-  equipmentDeleted(){
-    this.deleteEquipmentService.deleteEquipment([
-      this.equipmentForm.value.equipmentname])
+  
+
+  // equipmentDeleted(){
+  //   console.log("Hello");
+  //   this.deleteEquipmentService.deleteEquipment(1).subscribe(res=>
+  //     {
+  //       if(res=="NotAvailable"){
+  //         alert("Equipment Not Available");
+  //       }
+  //       else{
+  //         alert("Deleted Successfully");
+  //       }
+  //     });
+  // }
+
+  getEquipmentId(event:any){
+    console.log(event);
+    var eventStatus=event;
+    this.deleteEquipmentService.deleteEquipment(eventStatus).subscribe(res=>
+      {
+        if(res=="NotAvailable"){
+          alert("Equipment Not Available");
+        }
+        else{
+          alert("Deleted Successfully");
+          this.router.navigate(['deleteequipment']).then(page => { window.location.reload(); });
+           
+        }
+      });
+  
+    //this.deleteEquipmentService.deleteEquipment(event);
   }
-
-
+  
 }

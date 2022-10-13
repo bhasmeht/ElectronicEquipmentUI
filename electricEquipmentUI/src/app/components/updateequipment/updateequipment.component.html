@@ -4,14 +4,8 @@
            <span class="fs-3">Update Equipments</span>
         </div>
     </div>
-    <div class="row mb-3">
-        
-        <label for="equipmentid" class="form-label">EquipmentId</label>
-        <input type="text" class="form-control" id="equipmentid" formControlName="equipmentid">
     
-</div>
-   
-    <div class="row mb-3">
+   <div class="row mb-3">
         
             <label for="equipmentname" class="form-label">Equipment Name</label>
             <input type="text" class="form-control" id="equipmentname" formControlName="equipmentname">
@@ -41,7 +35,7 @@
     <div class="row">
         <div class="col-6 offset-3 mb-3">
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary" (click)="reloadCurrentPage()">Update Equipment</button>
+                <button type="submit" class="btn btn-primary" [disabled]="updateEquipmentForm.invalid">Update Equipment</button>
             </div>
         </div>
     </div>

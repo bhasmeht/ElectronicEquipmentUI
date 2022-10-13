@@ -19,6 +19,7 @@ import { UpdateequipmentComponent } from './components/updateequipment/updateequ
 import { UpdateequipmentgroupComponent } from './components/updateequipmentgroup/updateequipmentgroup.component';
 import { UpdateequipmentcategoryComponent } from './components/updateequipmentcategory/updateequipmentcategory.component';
 import { DeleteequipmentComponent } from './components/deleteequipment/deleteequipment.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DeleteequipmentComponent } from './components/deleteequipment/deleteequ
     UpdateequipmentComponent,
     UpdateequipmentgroupComponent,
     UpdateequipmentcategoryComponent,
-    DeleteequipmentComponent
+    DeleteequipmentComponent,
+    PageNotFoundComponent
     
   ],
   imports: [

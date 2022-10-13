@@ -23,17 +23,21 @@ export class ElecteicEquipmentService {
 
   updateEquipment(equipment:any){
     return this.http.put(this.baseServerUrl+'updateequipment',{
-      EquipmentId: equipment[0],
-      EquipmentName: equipment[1],
-      PartId: equipment[2],
-      EquipmentGroupId: equipment[3],
-      EquipmentCategoryId: equipment[4]
+      
+      EquipmentName: equipment[0],
+      PartId: equipment[1],
+      EquipmentGroupId: equipment[2],
+      EquipmentCategoryId: equipment[3]
 
+    },{
+      responseType:'text'
     });
   }
 
-  deleteEquipment(equipment:any){
-    return this.http.delete(this.baseServerUrl+'deleteequipment');
+  deleteEquipment(id:number){
+    return this.http.delete(this.baseServerUrl+'deleteequipment'+'/'+id,{
+      responseType:'text'
+    });
   }
 
   getAllEquipmentCategory(){

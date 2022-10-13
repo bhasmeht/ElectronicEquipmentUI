@@ -5,6 +5,7 @@ import { EquipmentCategoryComponent } from './components/equipment-category/equi
 import { EquipmentGroupComponent } from './components/equipment-group/equipment-group.component';
 import { EquipmentsComponent } from './components/equipments/equipments.component';
 import { LoginComponent } from './components/login/login.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UpdateequipmentComponent } from './components/updateequipment/updateequipment.component';
 import { UpdateequipmentcategoryComponent } from './components/updateequipmentcategory/updateequipmentcategory.component';
 import { UpdateequipmentgroupComponent } from './components/updateequipmentgroup/updateequipmentgroup.component';
@@ -48,6 +49,10 @@ const routes: Routes = [
  },
  {path:'updateequipment',
   component: UpdateequipmentComponent
+ },
+ {
+  path:'**',
+  component: PageNotFoundComponent
  }
 ];
 
