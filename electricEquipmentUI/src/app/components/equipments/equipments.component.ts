@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ElecteicEquipmentService } from 'src/app/services/electeic-equipment.service';
+import { UserAddService } from 'src/app/services/user-add.service';
 
 @Component({
   selector: 'app-equipments',
@@ -9,27 +11,66 @@ import { ElecteicEquipmentService } from 'src/app/services/electeic-equipment.se
 })
 export class EquipmentsComponent implements OnInit {
 
-  constructor(private addEquipmentService: ElecteicEquipmentService) { }
+  
+   
 
-  ngOnInit(): void {
+  constructor(private addEquipmentService: ElecteicEquipmentService, private userAddService: UserAddService, private router: Router) { }
+  equipmentCategoryList:any;
+  equipmentGroupList: any;
+  
+
+  ngOnInit() {
+    this.addEquipmentService.getAllEquipmentCategory().subscribe(equipmentCategoryList=>
+      {this.equipmentCategoryList = equipmentCategoryList
+    });
+    
   }
+  
 
 
   equipmentForm = new FormGroup({
-    equipmentid: new FormControl(""),
+    
     equipmentname: new FormControl(""),
     partid: new FormControl(""),
-    equipmentgroupid: new FormControl(""),
+    equipmentgroupid: new FormControl("123"),
     equipmentcategoryid: new FormControl("")
   });
 
   equipmentAdded(){
     this.addEquipmentService.addEquipment([
-      this.equipmentForm.value.equipmentid,
+      
       this.equipmentForm.value.equipmentname,
       this.equipmentForm.value.partid,
       this.equipmentForm.value.equipmentgroupid,
       this.equipmentForm.value.equipmentcategoryid
-    ]).subscribe()
+    ]).subscribe(res=>{
+      if(res=="EquipmentExist"){
+        alert("Equipment Already Exist");
+        this.router.navigateByUrl('equipment');
+      }
+      else{
+         alert("Equipment Added Successfully");
+         this.router.navigateByUrl('equipment');
+      }
+      
+    })
   }
+
+  GetEquipGroupById(event:any){
+     console.log(event);
+     this.addEquipmentService.getEquipmentGroupByCategoryId(event).subscribe(equipmentGroupList=>{
+      this.equipmentGroupList=equipmentGroupList;
+     })
+
+  }
+
+  logOut()
+  {
+    this.userAddService.removeToken();
+    this.router.navigateByUrl('login');
+
+  }
+  reloadCurrentPage() {
+    window. location. reload();
+    }
 }

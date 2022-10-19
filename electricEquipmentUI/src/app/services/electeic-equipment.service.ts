@@ -8,16 +8,47 @@ export class ElecteicEquipmentService {
 
   constructor(private http: HttpClient) { }
 
-  baseServerUrl = "http://localhost:5000/api/Equipment/addequipment";
+  baseServerUrl = "http://localhost:5000/api/Equipment/";
 
-  addEquipment(equipment:Array<any>){
-    return this.http.post(this.baseServerUrl,{
-      EquipmentId: equipment[0],
-      EquipmentName: equipment[1],
-      PartId: equipment[2],
-      EquipmentGroupId: equipment[3],
-      EquipmentCategoryId: equipment[4]
+  addEquipment(equipment:any){
+    return this.http.post(this.baseServerUrl+'addequipment',{
+      
+      EquipmentName: equipment[0],
+      PartId: equipment[1],
+      EquipmentGroupId: equipment[2],
+      EquipmentCategoryId: equipment[3]
 
-    },{responseType:'text'});
+    });
+  }
+
+  updateEquipment(equipment:any){
+    return this.http.put(this.baseServerUrl+'updateequipment',{
+      
+      EquipmentName: equipment[0],
+      PartId: equipment[1],
+      EquipmentGroupId: equipment[2],
+      EquipmentCategoryId: equipment[3]
+
+    },{
+      responseType:'text'
+    });
+  }
+
+  deleteEquipment(id:number){
+    return this.http.delete(this.baseServerUrl+'deleteequipment'+'/'+id,{
+      responseType:'text'
+    });
+  }
+
+  getAllEquipmentCategory(){
+    return this.http.get('http://localhost:5000/api/EquipmentCategory/getequipmentcategory');
+  }
+
+  getAllEquipment(){
+    return this.http.get('http://localhost:5000/api/Equipment/getequipment');
+  }
+
+  getEquipmentGroupByCategoryId(equipCatId:any){
+    return this.http.get('http://localhost:5000/api/EquipmentGroup/getequipmentcategorybygroupid/'+equipCatId);
   }
 }
